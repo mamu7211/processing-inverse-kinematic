@@ -20,12 +20,10 @@ class Segment extends StaticSegment{
   
   void follow(float targetX, float targetY) {
     PVector target = new PVector(targetX, targetY);
-    PVector direction = PVector.sub(target, b);
-    if (direction.mag()>1.0){
-      angle = direction.heading();
-      b = new PVector(targetX, targetY);
-      calculateA();
-    }
+    PVector direction = PVector.sub(target, a);
+    angle = direction.heading();
+    b = new PVector(targetX, targetY);
+    calculateA();
   }
   
   void calculateA() {

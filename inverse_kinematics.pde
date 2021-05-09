@@ -1,7 +1,7 @@
 Segment seg;
 
 void setup() {
-  StaticSegment.showLetters = false;
+  StaticSegment.showLetters = true;
   size(600,400);
   seg = new Segment(100,100, 180, 75, color(128,255,128));
 }
