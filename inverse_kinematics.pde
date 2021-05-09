@@ -2,8 +2,9 @@ Leg leg;
 
 void setup() {
   StaticSegment.showLetters = true;
-  size(900,600);
-  leg = new Leg(100,100,200,500);
+  size(1600,1200);
+  leg = new Leg(5, 0, 0, 0,width/2-50);
+  leg.base = new PVector(width, height).mult(0.5);
 }
 
 void draw() {

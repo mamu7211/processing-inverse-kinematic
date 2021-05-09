@@ -33,6 +33,12 @@ class Segment extends StaticSegment {
     offset.mult(len);
     a = PVector.sub(b, offset);
   }
+  
+  void setBase(float baseX, float baseY) {
+    PVector direction = PVector.sub(b, a);
+    a = new PVector(baseX, baseY);
+    b = PVector.add(a, direction);
+  }
 
   void show() {
     stroke(col);
