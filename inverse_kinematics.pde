@@ -1,13 +1,13 @@
-Segment seg;
+Leg leg;
 
 void setup() {
   StaticSegment.showLetters = true;
-  size(600,400);
-  seg = new Segment(100,100, 180, 75, color(128,255,128));
+  size(900,600);
+  leg = new Leg(100,100,200,500);
 }
 
 void draw() {
   background(51);
-  seg.show();
-  seg.follow(mouseX, mouseY);
+  leg.show();
+  leg.follow(mouseX, mouseY);
 }
