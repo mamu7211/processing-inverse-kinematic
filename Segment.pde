@@ -1,4 +1,8 @@
-class Segment {
+static class StaticSegment {
+   static boolean showLetters = true;
+}
+
+class Segment extends StaticSegment{
   
   PVector a;
   PVector b;
@@ -17,8 +21,11 @@ class Segment {
   void follow(float targetX, float targetY) {
     PVector target = new PVector(targetX, targetY);
     PVector direction = PVector.sub(target, b);
-    angle = direction.heading();
-    calculateA();
+    if (direction.mag()>1.0){
+      angle = direction.heading();
+      b = new PVector(targetX, targetY);
+      calculateA();
+    }
   }
   
   void calculateA() {
@@ -34,5 +41,19 @@ class Segment {
     line(a.x, a.y, b.x, b.y);
     circle(b.x,b.y, 16);
     circle(a.x,a.y, 8);
+    textSize(24);    
+    noStroke();
+    if (showLetters){
+      printLetter("A",a);
+      printLetter("B",b);
+    }
+  }
+  
+  void printLetter(String letter, PVector v) {
+    fill(51,196);
+    circle(v.x+16, v.y+16, 24);
+    fill(col);
+    text(letter, v.x + 8, v.y + 24);
+    noFill();
   }
 }
