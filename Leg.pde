@@ -9,8 +9,7 @@ class Leg {
     color(255,255,128),
     color(128,255,128),
     color(128,255,255),
-    color(128,128,255),
-    color(255,255,128)
+    color(128,128,255)
   };
   
   Leg(int segmentCount, float sx, float sy, float ex, float ey) {
@@ -33,8 +32,10 @@ class Leg {
   }
   
   void show() {
+    float parentAngle = 0.0;
     for (int i = 0; i < segmentCount; i++) {
-      segments[i].show();
+      segments[i].show(parentAngle);
+      parentAngle = segments[i].angle;
     }
   }
   
@@ -45,10 +46,12 @@ class Leg {
       segments[i].follow(followVector.x, followVector.y);
       followVector = segments[i].a;
     }
-    
+
     PVector currentBase = base;
+    float priorAngle = 0.0;
     for (int i = 0; i < segmentCount; i++) {
-      segments[i].setBase(currentBase.x, currentBase.y);
+      segments[i].setBase(currentBase.x, currentBase.y, priorAngle);
+      priorAngle = segments[i].baseAngle;
       currentBase = segments[i].b;
     }
   }
